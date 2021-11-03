@@ -13,7 +13,7 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <header>
+    <header style="text-align: center">
         Weather Dashboard
     </header>
     <!-- Div container -->
@@ -23,7 +23,24 @@
             <textarea id="citySearch"></textarea>
             <button class="search" id="search">Search</button>
         </div>
-        
+        <div class="col-8 card">
+            <div class="current-city">
+                <h2 id="city">Enter city or town name here</h2>
+                <div id="temperature" class="mainStats">Temp F:</div>
+                <div id="humidity" class="mainStats">Wind:</div>
+                <div id="uvIndex" class="mainStats">Humidity %:</div>
+                <div id="wind" class="mainStats">UV Index:</div>
+            </div>
+            <div id="forecast">
+                <h4>5 Day Forecast:</h4>
+            </div>
+        </div>
     </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+
 </body>
 </html>
