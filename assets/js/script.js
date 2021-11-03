@@ -1,4 +1,4 @@
-var apiKey = "1c8cb45144f4f62ad69f578a7c3ac3cf"
+var apiKey = "1c8cb45144f4f62ad69f578a7c3ac3cf";
 var query1 = "https://api.openweathermap.org/data/2.5/weather?q=";
 var query2 = "https://api.openweathermap.org/data/2.5/onecall?lat=";
 var exclude = "&exclude=minutely,hourly,alerts&units=imperial";
@@ -43,4 +43,32 @@ function renderWeather() {
 
     }
 }
-console.log(renderWeather);
+// console.log(renderWeather);
+
+function renderCity() {
+    var citySearch = document.getElementById('citySearch').value;
+    document.getElementById('city').innerText = citySearch + moment().format('(MM/DD/YY)');
+    console.log(citySearch);
+
+    fetch(query1 + citySearch + apiKey)
+    .then(function(response){
+        return response.json();
+
+    })
+    .then(function(data) {
+        console.log(data);
+        var lat = data.coord.lat;
+        var lon = data.coord.lon;
+        fetch(url2 + lat + '&lon=' + lon + exclude + apiKey)
+        .then(function(response){
+            return response.json();
+    })
+    .then(function(data) {
+        console.log(data);
+        var temp = data.current.temp;
+        var wind = data.current.wind_speed;
+        var humidity = data.current.humidity;
+        var uvIndex = data.current.uvi;
+        
+    })
+}
