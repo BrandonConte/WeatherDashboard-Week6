@@ -1,4 +1,4 @@
-var apiKey = "1c8cb45144f4f62ad69f578a7c3ac3cf";
+var apiKey = "&cnt=5&appid=1c8cb45144f4f62ad69f578a7c3ac3cf";
 var query1 = "https://api.openweathermap.org/data/2.5/weather?q=";
 var query2 = "https://api.openweathermap.org/data/2.5/onecall?lat=";
 var exclude = "&exclude=minutely,hourly,alerts&units=imperial";
@@ -57,9 +57,9 @@ function renderCity() {
     })
     .then(function(data) {
         console.log(data);
-        var lat = data.coord.lat;
-        var lon = data.coord.lon;
-        fetch(url2 + lat + '&lon=' + lon + exclude + apiKey)
+        var latitude = data.coord.lat;
+        var longitude = data.coord.lon;
+        fetch(query2 + latitude + '&lon=' + longitude + exclude + apiKey)
         .then(function(response){
             return response.json();
     })
@@ -79,4 +79,12 @@ function renderCity() {
     renderWeather();
 });
 
+var savedCities = document.createElement('button');
+savedCities.setAttribute('id', citySearch);
+savedCities.className = 'search';
+savedCities.textContent = citySearch;
+cities.appendChild(savedCities);
+document.getElementById('citySearch').value = '';
 }
+
+searchButton.addEventListener("click", renderCity);
