@@ -70,5 +70,13 @@ function renderCity() {
         var humidity = data.current.humidity;
         var uvIndex = data.current.uvi;
         
+        document.getElementById('temperature').textContent = 'Temp: ' + temp + " F";
+        document.getElementById('wind').textContent = 'Wind: ' + wind + ' MPH';
+        document.getElementById('humidity').textContent = 'Humidity: ' + humidity + " %";
+        document.getElementById('uvIndex').textContent = 'UV Index: ' + uvIndex;
+
     })
+    renderWeather();
+});
+
 }
